@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  socket-server:
+    image: socket-server
+    networks:
+      - compose-socket-network
+    ports:
+      - "8888:8888"
+
+  socket-client:
+    image: socket-client
+    networks:
+      - compose-socket-network
+    environment:
+      - SOCKET_SERVER_HOST=socket-server
+    depends_on:
+      - socket-server
+
+networks:
+  compose-socket-network:
+
+# docker-compose up  для старта
