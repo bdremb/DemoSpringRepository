@@ -1,4 +1,5 @@
 # demo-spring-repository
-# learn project
+
+# learn demo spring project
 
 examples of spring framework code
