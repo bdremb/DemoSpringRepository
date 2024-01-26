@@ -8,6 +8,7 @@ class DemoSpringStarterApplicationTests {
 
     @Test
     void contextLoads() {
+        //some code
     }
 
 }
