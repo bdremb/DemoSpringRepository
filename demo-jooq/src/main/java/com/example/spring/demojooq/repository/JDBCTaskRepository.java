@@ -5,7 +5,6 @@ import com.example.spring.demojooq.repository.mapper.TaskRowMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Primary;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.ArgumentPreparedStatementSetter;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
@@ -23,10 +22,10 @@ import java.util.Optional;
 import static java.util.Objects.nonNull;
 
 @Slf4j
-@Primary
+//@Primary
 @Repository
 @RequiredArgsConstructor
-public class DataBaseTaskRepository implements TaskRepository {
+public class JDBCTaskRepository implements TaskRepository {
 
     private final JdbcTemplate jdbcTemplate;
 

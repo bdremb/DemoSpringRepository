@@ -4,6 +4,8 @@ import com.example.spring.demojooq.model.Task;
 import com.example.spring.demojooq.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.context.event.ApplicationStartedEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ public class DataBaseTaskCreator {
 
     private final TaskService taskService;
 
-//    @EventListener(ApplicationStartedEvent.class)
+    @EventListener(ApplicationStartedEvent.class)
     public void createTaskData() {
         log.debug("Calling DataBaseTaskCreator createTaskData...");
         taskService.batchInsert(getGeneratedTaskList());
