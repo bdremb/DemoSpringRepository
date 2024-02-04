@@ -1,4 +1,4 @@
-package com.example.spring.demoweb;
+package com.example.spring.demoweb.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

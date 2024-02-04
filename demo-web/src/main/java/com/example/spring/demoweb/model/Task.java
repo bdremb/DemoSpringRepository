@@ -1,6 +1,5 @@
-package com.example.spring.demoweb;
+package com.example.spring.demoweb.model;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data
