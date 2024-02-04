@@ -17,4 +17,6 @@ public interface TaskRepository {
 
     void deleteById(Long id);
 
+    void batchInsert(List<Task> tasks);
+
 }

@@ -15,4 +15,6 @@ public interface TaskService {
     Task update(Task task);
 
     void deleteById(Long id);
+
+    void batchInsert(List<Task> tasks);
 }
