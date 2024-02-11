@@ -23,7 +23,7 @@ public class ClientMapper {
     }
 
     public Client requestToClient(Long clientId, UpsertClientRequest request) {
-        Client client = new Client();
+        Client client = requestToClient(request);
         client.setId(clientId);
         return client;
     }
