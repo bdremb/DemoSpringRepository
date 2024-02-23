@@ -1,4 +1,4 @@
-package com.example.spring.demospringrest.web.v1;
+package com.example.spring.demospringrest.web.controller.v1;
 
 import com.example.spring.demospringrest.mapper.v1.ClientMapper;
 import com.example.spring.demospringrest.model.Client;
@@ -6,6 +6,7 @@ import com.example.spring.demospringrest.service.ClientService;
 import com.example.spring.demospringrest.web.model.ClientListResponse;
 import com.example.spring.demospringrest.web.model.ClientResponse;
 import com.example.spring.demospringrest.web.model.UpsertClientRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,7 +43,7 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<ClientResponse> create(@RequestBody UpsertClientRequest request) {
+    public ResponseEntity<ClientResponse> create(@RequestBody @Valid UpsertClientRequest request) {
         Client newClient = clientService.save(clientMapper.requestToClient(request));
         return ResponseEntity.status(HttpStatus.CREATED).body(clientMapper.clientToResponse(newClient));
     }
@@ -58,5 +59,10 @@ public class ClientController {
         clientService.deleteById(id);
         return  ResponseEntity.noContent().build();
     }
+
+//    @ExceptionHandler(EntityNotFoundException.class)
+//    public ResponseEntity<Void> notFoundHandler(EntityNotFoundException ex) {
+//        return ResponseEntity.notFound().build();
+//    }
 
 }

@@ -1,4 +1,4 @@
-package com.example.spring.demospringrest.web.v1;
+package com.example.spring.demospringrest.web.controller.v1;
 
 import com.example.spring.demospringrest.mapper.v1.OrderMapper;
 import com.example.spring.demospringrest.model.Order;
