@@ -38,10 +38,20 @@ public class Client {
     private List<Order> orders = new ArrayList<>();
 
     public void addOrder(Order order) {
+        if(orders == null) {
+            orders = new ArrayList<>();
+        }
         orders.add(order);
     }
 
     public void removeOrder(Long orderId) {
         orders = orders.stream().filter(order -> !order.getId().equals(orderId)).collect(Collectors.toList());
+    }
+
+    public List<Order> getOrders() {
+        if(orders == null) {
+            orders = new ArrayList<>();
+        }
+        return orders;
     }
 }
