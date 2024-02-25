@@ -7,7 +7,7 @@ import com.example.spring.demospringrest.repository.ClientRepository;
 import com.example.spring.demospringrest.repository.OrderRepository;
 import com.example.spring.demospringrest.utils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -20,7 +20,8 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 
-@Repository
+//@Repository
+@Component
 public class InMemoryClientRepository implements ClientRepository {
 
     private OrderRepository orderRepository;

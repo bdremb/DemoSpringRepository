@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Client V1", description = "Client API version V1")
 public class ClientController {
 
-    private final ClientService clientService;
+    private final ClientService clientServiceImpl;
 
     private final ClientMapper clientMapper;
 
@@ -45,7 +45,7 @@ public class ClientController {
     @GetMapping
     public ResponseEntity<ClientListResponse> findAll() {
         return ResponseEntity.ok(
-                clientMapper.clientListToClientResponseList(clientService.findAll())
+                clientMapper.clientListToClientResponseList(clientServiceImpl.findAll())
         );
     }
 
@@ -71,19 +71,19 @@ public class ClientController {
     @GetMapping("/{id}")
     public ResponseEntity<ClientResponse> findById(@PathVariable Long id) {
         return ResponseEntity.ok(
-                clientMapper.clientToResponse(clientService.findById(id))
+                clientMapper.clientToResponse(clientServiceImpl.findById(id))
         );
     }
 
     @PostMapping
     public ResponseEntity<ClientResponse> create(@RequestBody @Valid UpsertClientRequest request) {
-        Client newClient = clientService.save(clientMapper.requestToClient(request));
+        Client newClient = clientServiceImpl.save(clientMapper.requestToClient(request));
         return ResponseEntity.status(HttpStatus.CREATED).body(clientMapper.clientToResponse(newClient));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ClientResponse> update(@PathVariable("id") Long clientId, @RequestBody UpsertClientRequest request) {
-        Client updatedClient = clientService.update(clientMapper.requestToClient(clientId, request));
+        Client updatedClient = clientServiceImpl.update(clientMapper.requestToClient(clientId, request));
         return ResponseEntity.ok(clientMapper.clientToResponse(updatedClient));
     }
 
@@ -94,7 +94,7 @@ public class ClientController {
     )
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
-        clientService.deleteById(id);
+        clientServiceImpl.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 
