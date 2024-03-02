@@ -5,6 +5,7 @@ import com.example.spring.demospringrest.exception.EntityNotFoundException;
 import com.example.spring.demospringrest.model.Order;
 import com.example.spring.demospringrest.repository.OrderRepository;
 import com.example.spring.demospringrest.service.OrderService;
+import com.example.spring.demospringrest.web.model.OrderFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,11 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
+
+    @Override
+    public List<Order> filterBy(OrderFilter filter) {
+       throw new UnsupportedOperationException("Not implemented");
+    }
 
     @Override
     public List<Order> findAll() {

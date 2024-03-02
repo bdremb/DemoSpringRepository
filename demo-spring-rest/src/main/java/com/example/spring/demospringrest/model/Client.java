@@ -35,6 +35,7 @@ public class Client {
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     @ToString.Exclude
+    @Builder.Default
     private List<Order> orders = new ArrayList<>();
 
     public void addOrder(Order order) {
@@ -48,10 +49,11 @@ public class Client {
         orders = orders.stream().filter(order -> !order.getId().equals(orderId)).collect(Collectors.toList());
     }
 
-    public List<Order> getOrders() {
-        if(orders == null) {
-            orders = new ArrayList<>();
-        }
-        return orders;
-    }
+    //add Builder.Default instead this method
+//    public List<Order> getOrders() {
+//        if(orders == null) {
+//            orders = new ArrayList<>();
+//        }
+//        return orders;
+//    }
 }

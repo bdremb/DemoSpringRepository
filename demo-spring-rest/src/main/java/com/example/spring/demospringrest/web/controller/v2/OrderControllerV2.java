@@ -3,6 +3,7 @@ package com.example.spring.demospringrest.web.controller.v2;
 import com.example.spring.demospringrest.mapper.v2.OrderMapperV2;
 import com.example.spring.demospringrest.model.Order;
 import com.example.spring.demospringrest.service.OrderService;
+import com.example.spring.demospringrest.web.model.OrderFilter;
 import com.example.spring.demospringrest.web.model.OrderListResponse;
 import com.example.spring.demospringrest.web.model.OrderResponse;
 import com.example.spring.demospringrest.web.model.UpsertOrderRequest;
@@ -27,6 +28,11 @@ public class OrderControllerV2 {
     private final OrderService databaseOrderService;
 
     private final OrderMapperV2 orderMapper;
+
+    @GetMapping("/filter")
+    public ResponseEntity<OrderListResponse> filterBy(OrderFilter filter) {
+        return ResponseEntity.ok(orderMapper.orderListToOrderListResponse(databaseOrderService.filterBy(filter)));
+    }
 
     @GetMapping
     public ResponseEntity<OrderListResponse> findAll() {
