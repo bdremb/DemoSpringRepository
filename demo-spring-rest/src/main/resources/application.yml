@@ -3,6 +3,7 @@ spring:
     allow-circular-references: true
   jpa:
     generate-ddl: true
+    open-in-view: false
   datasource:
     url: jdbc:postgresql://localhost:5435/app_db
     username: postgres

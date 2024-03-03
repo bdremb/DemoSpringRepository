@@ -2,6 +2,7 @@ package com.example.spring.demospringrest.service.impl;
 
 import com.example.spring.demospringrest.exception.EntityNotFoundException;
 import com.example.spring.demospringrest.model.Client;
+import com.example.spring.demospringrest.model.Order;
 import com.example.spring.demospringrest.repository.ClientRepository;
 import com.example.spring.demospringrest.service.ClientService;
 import lombok.RequiredArgsConstructor;
@@ -40,5 +41,10 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void deleteById(Long id) {
         clientRepository.deleteById(id);
+    }
+
+    @Override
+    public Client saveWithOrders(Client client, List<Order> orders) {
+        throw new UnsupportedOperationException("Not implemented");
     }
 }
