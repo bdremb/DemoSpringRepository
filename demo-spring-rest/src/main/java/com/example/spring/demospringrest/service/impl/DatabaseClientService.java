@@ -1,5 +1,6 @@
 package com.example.spring.demospringrest.service.impl;
 
+import com.example.spring.demospringrest.aop.Loggable;
 import com.example.spring.demospringrest.exception.EntityNotFoundException;
 import com.example.spring.demospringrest.model.Client;
 import com.example.spring.demospringrest.model.Order;
@@ -23,6 +24,7 @@ public class DatabaseClientService implements ClientService {
     private final DatabaseOrderRepository orderRepository;
 
     @Override
+    @Loggable
     public List<Client> findAll() {
         return clientRepository.findAll();
     }
@@ -52,9 +54,10 @@ public class DatabaseClientService implements ClientService {
 
     @Override
     @Transactional
+    @Loggable
     public Client saveWithOrders(Client client, List<Order> orders) {
         Client savedClient = clientRepository.save(client);
-        for(Order order : orders) {
+        for (Order order : orders) {
             order.setClient(savedClient);
             Order savedOrder = orderRepository.save(order);
             savedClient.addOrder(savedOrder);
