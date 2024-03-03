@@ -1,5 +1,6 @@
 package com.example.spring.demospringrest.repository;
 
+import com.example.spring.demospringrest.model.Client;
 import com.example.spring.demospringrest.model.Order;
 import com.example.spring.demospringrest.web.model.OrderFilter;
 import org.springframework.data.jpa.domain.Specification;
@@ -22,7 +23,7 @@ public interface OrderSpecification {
             if (updateBefore == null) {
                 return null;
             }
-            return criteriaBuilder.lessThanOrEqualTo(root.get("updatedAt"), updateBefore);
+            return criteriaBuilder.lessThanOrEqualTo(root.get(Order.Fields.updatedAt), updateBefore);
         };
     }
 
@@ -31,7 +32,7 @@ public interface OrderSpecification {
             if (createBefore == null) {
                 return null;
             }
-            return criteriaBuilder.lessThanOrEqualTo(root.get("createdAt"), createBefore);
+            return criteriaBuilder.lessThanOrEqualTo(root.get(Order.Fields.createdAt), createBefore);
         };
     }
 
@@ -41,7 +42,7 @@ public interface OrderSpecification {
             if (clientId == null) {
                 return null;
             }
-            return criteriaBuilder.equal(root.get("client").get("id"), clientId);
+            return criteriaBuilder.equal(root.get(Order.Fields.client).get(Client.Fields.id), clientId);
         };
     }
 
@@ -51,12 +52,12 @@ public interface OrderSpecification {
                 return null;
             }
             if (minCost == null) {
-                return criteriaBuilder.lessThanOrEqualTo(root.get("cost"), maxCost);
+                return criteriaBuilder.lessThanOrEqualTo(root.get(Order.Fields.cost), maxCost);
             }
             if (maxCost == null) {
-                return criteriaBuilder.greaterThanOrEqualTo(root.get("cost"), minCost);
+                return criteriaBuilder.greaterThanOrEqualTo(root.get(Order.Fields.cost), minCost);
             }
-            return criteriaBuilder.between(root.get("cost"), minCost, maxCost);
+            return criteriaBuilder.between(root.get(Order.Fields.cost), minCost, maxCost);
         };
     }
 
@@ -65,7 +66,7 @@ public interface OrderSpecification {
             if (productName == null) {
                 return null;
             }
-            return criteriaBuilder.equal(root.get("product"), productName);
+            return criteriaBuilder.equal(root.get(Order.Fields.product), productName);
         };
     }
 

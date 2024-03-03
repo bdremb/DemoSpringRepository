@@ -1,5 +1,6 @@
 package com.example.spring.demospringrest.web.model;
 
+import com.example.spring.demospringrest.validation.OrderFilterValid;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +9,7 @@ import java.time.Instant;
 
 @Data
 @NoArgsConstructor
+@OrderFilterValid
 public class OrderFilter {
 
     private Integer pageSize;
